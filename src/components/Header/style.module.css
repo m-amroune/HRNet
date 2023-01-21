@@ -31,6 +31,11 @@
   font-size: 24px;
 }
 
+nav li a {
+  font-weight: bold;
+  color: black;
+}
+
 .nav-link {
   text-decoration: none;
   color: red;

@@ -4,10 +4,13 @@ import style from "./style.module.css";
 import { departments } from "../../data/departments";
 import { states } from "../../data/states";
 import Select from "../Select/Select";
+import Modal from "../Modal/Modal";
+import Button from "../Button/Button";
 
-const Form = () => {
+const Form = ({ variant = "save" }) => {
   const [department, setDepartment] = useState("");
   const [state, setState] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const handleChangeInput = (e, inputName) => {
     inputName(e.target.value);
   };
@@ -15,6 +18,11 @@ const Form = () => {
   const statesArray = states.map((state) => {
     return state.name;
   });
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
 
   return (
     <div className={style["form-container"]}>
@@ -72,8 +80,17 @@ const Form = () => {
             onChange={(e) => handleChangeInput(e, setDepartment)}
           />
         </div>
-        <button>Save</button>
+        <Button
+          className={`${style.button} ${style[variant]} `}
+          type="button"
+          onClick={handleSave}
+        >
+          Save
+        </Button>
       </form>
+      <Modal isOpen={showModal} setIsOpen={setShowModal}>
+        <p>New employee created !</p>
+      </Modal>
     </div>
   );
 };
