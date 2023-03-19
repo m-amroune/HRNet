@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import ListEmployees from "./pages/ListEmployees";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error />} />
+        <Route path="/table" element={<ListEmployees />} />
       </Routes>
       <Footer />
     </BrowserRouter>

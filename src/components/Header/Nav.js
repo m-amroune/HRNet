@@ -18,6 +18,7 @@ const Nav = () => {
         </li>
         <li>
           <NavLink
+            to="/table"
             className={({ isActive }) =>
               isActive ? style["nav-active"] : style["nav-link"]
             }

@@ -5,13 +5,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5rem;
+  padding: 32rem;
 }
 
 .modal {
   background-color: #fbfbff;
   border-radius: 15px;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
+  margin-top: 400px;
 }
 
 .modal-button {

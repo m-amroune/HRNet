@@ -10,8 +10,17 @@ import Button from "../Button/Button";
 const Form = ({ variant = "save" }) => {
   const [department, setDepartment] = useState("");
   const [state, setState] = useState("");
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [error, setError] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
-  const handleChangeInput = (e, inputName) => {
+
+  const handleChangeSelect = (e, inputName) => {
     inputName(e.target.value);
   };
 
@@ -21,19 +30,45 @@ const Form = ({ variant = "save" }) => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    setShowModal(true);
+    if (
+      firstName.length <= 1 ||
+      lastName.length <= 1 ||
+      street.length <= 4 ||
+      city.length <= 1 ||
+      zipCode.length <= 4
+    ) {
+      setError(true);
+      setShowModal(false);
+    } else {
+      setError(false);
+      setShowModal(true);
+    }
   };
 
   return (
     <div className={style["form-container"]}>
-      <form className={style.form}>
+      <form onSubmit={handleSave} className={style.form}>
         <div className={style.categories}>
           <label htmlFor="">First Name</label>
-          <input type="text" />
+          <input onChange={(e) => setFirstName(e.target.value)} type="text" />
+          {error && firstName.length <= 1 ? (
+            <p className={style.errorInput}>
+              The value must have at least 2 characters
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className={style.categories}>
           <label htmlFor="">Last Name</label>
-          <input type="text" />
+          <input onChange={(e) => setLastName(e.target.value)} type="text" />
+          {error && lastName.length <= 1 ? (
+            <p className={style.errorInput}>
+              The value must have at least 2 characters
+            </p>
+          ) : (
+            ""
+          )}
         </div>
         <div className={style.dates}>
           <div>
@@ -49,11 +84,25 @@ const Form = ({ variant = "save" }) => {
           <legend>Address</legend>
           <div className={style.categories}>
             <label htmlFor="">Street</label>
-            <input type="text" />
+            <input onChange={(e) => setStreet(e.target.value)} type="text" />
+            {error && street.length <= 4 ? (
+              <p className={style.errorInput}>
+                The value must have at least 4 characters
+              </p>
+            ) : (
+              ""
+            )}
           </div>
           <div className={style.categories}>
             <label htmlFor="">City</label>
-            <input type="text" />
+            <input onChange={(e) => setCity(e.target.value)} type="text" />
+            {error && city.length <= 1 ? (
+              <p className={style.errorInput}>
+                The value must have at least 5 characters
+              </p>
+            ) : (
+              ""
+            )}
           </div>
           <div className={style.categories}>
             <Select
@@ -62,12 +111,19 @@ const Form = ({ variant = "save" }) => {
               data={statesArray}
               inputName="state"
               value={state}
-              onChange={(e) => handleChangeInput(e, setState)}
+              onChange={(e) => handleChangeSelect(e, setState)}
             />
           </div>
           <div className={style.categories}>
             <label htmlFor="">Zip Code</label>
-            <input type="number" />
+            <input onChange={(e) => setZipCode(e.target.value)} type="number" />
+            {error && street.length <= 4 ? (
+              <p className={style.errorInput}>
+                The value must have at least 5 characters
+              </p>
+            ) : (
+              ""
+            )}
           </div>
         </fieldset>
         <div className={style.categories}>
@@ -77,13 +133,14 @@ const Form = ({ variant = "save" }) => {
             data={departments}
             inputName="department"
             value={department}
-            onChange={(e) => handleChangeInput(e, setDepartment)}
+            onChange={(e) => handleChangeSelect(e, setDepartment)}
           />
         </div>
+
         <Button
           className={`${style.button} ${style[variant]} `}
-          type="button"
-          onClick={handleSave}
+          type="submit"
+          onSubmit={handleSave}
         >
           Save
         </Button>
