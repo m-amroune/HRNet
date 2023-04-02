@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DatePicker from "../DatePicker/DatePicker";
+import DatePickerReact from "../DatePicker/DatePicker";
 import style from "./style.module.css";
 import { departments } from "../../data/departments";
 import { states } from "../../data/states";
@@ -10,6 +10,8 @@ import Button from "../Button/Button";
 const Form = ({ variant = "save" }) => {
   const [department, setDepartment] = useState("");
   const [state, setState] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [dateOFBirth, setDateOFBirth] = useState("");
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -28,6 +30,18 @@ const Form = ({ variant = "save" }) => {
     return state.name;
   });
 
+  let employee = {
+    firstName: firstName,
+    lastName: lastName,
+    startDate: startDate,
+    department: department,
+    dateOFBirth: dateOFBirth,
+    street: street,
+    city: city,
+    state: state,
+    zipCode: zipCode,
+  };
+
   const handleSave = (e) => {
     e.preventDefault();
     if (
@@ -42,6 +56,14 @@ const Form = ({ variant = "save" }) => {
     } else {
       setError(false);
       setShowModal(true);
+      let userLocalStorage = localStorage.getItem("employee");
+      if (userLocalStorage == null) {
+        userLocalStorage = [];
+      } else {
+        userLocalStorage = JSON.parse(userLocalStorage);
+      }
+      userLocalStorage.push(employee);
+      localStorage.setItem("employee", JSON.stringify(userLocalStorage));
     }
   };
 
@@ -73,11 +95,17 @@ const Form = ({ variant = "save" }) => {
         <div className={style.dates}>
           <div>
             <label htmlFor="">Date of Birth</label>
-            <DatePicker />
+            <DatePickerReact
+              selected={dateOFBirth}
+              onChange={(dateOFBirth) => setDateOFBirth(dateOFBirth)}
+            />
           </div>
           <div>
             <label htmlFor="">Start Date</label>
-            <DatePicker />
+            <DatePickerReact
+              selected={startDate}
+              onChange={(startDate) => setStartDate(startDate)}
+            />
           </div>
         </div>
         <fieldset>
