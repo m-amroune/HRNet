@@ -3,6 +3,13 @@
   margin: 0 auto;
 }
 
+h2 {
+  text-align: center;
+  padding: 20px 0;
+  color: darkgrey;
+  font-weight: 600;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -22,31 +29,36 @@
 .dates {
   display: flex;
   flex-direction: row;
-  gap: 10%;
 }
 
 input {
   border-radius: 10px;
   border: 1px solid #c4c4c4;
   padding: 5px 15px;
-  margin: 5px 0;
+  margin: 5px 20px;
+  width: 80%;
 }
 
 select {
-  margin: 5px 0;
+  margin: 5px 10px;
   padding: 5px 15px;
   width: none;
 }
 
 legend {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
   margin: 10px;
   padding: 5px 10px;
+  color: darkgrey;
 }
 
 label {
   font-weight: bold;
+  color: darkgrey;
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 18px;
 }
 
 .errorInput {

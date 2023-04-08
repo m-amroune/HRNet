@@ -137,6 +137,7 @@ const Form = ({ variant = "save" }) => {
               label="State"
               idHtmlFor="state"
               data={statesArray}
+              selectText="Select..."
               inputName="state"
               value={state}
               onChange={(e) => handleChangeSelect(e, setState)}
