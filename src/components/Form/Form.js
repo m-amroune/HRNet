@@ -8,10 +8,10 @@ import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 
 const Form = ({ variant = "save" }) => {
-  const [department, setDepartment] = useState("");
-  const [state, setState] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [dateOFBirth, setDateOFBirth] = useState("");
+  const [department, setDepartment] = useState("Alabama");
+  const [state, setState] = useState("Sales");
+  const [startDate, setStartDate] = useState(new Date());
+  const [dateOFBirth, setDateOFBirth] = useState(new Date());
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -22,6 +22,14 @@ const Form = ({ variant = "save" }) => {
 
   const [showModal, setShowModal] = useState(false);
 
+  const formatDate = (date) => {
+    const dateNew = new Date(date);
+    const dateISO = dateNew.toISOString().split("T")[0];
+    const [year, month, day] = dateISO.split(".");
+
+    return [year, month, day].join("");
+  };
+
   const handleChangeSelect = (e, inputName) => {
     inputName(e.target.value);
   };
@@ -30,12 +38,14 @@ const Form = ({ variant = "save" }) => {
     return state.name;
   });
 
-  let employee = {
+  let employee = [];
+
+  employee = {
     firstName: firstName,
     lastName: lastName,
-    startDate: startDate,
+    startDate: formatDate(startDate),
     department: department,
-    dateOFBirth: dateOFBirth,
+    dateOFBirth: formatDate(dateOFBirth),
     street: street,
     city: city,
     state: state,
@@ -97,7 +107,11 @@ const Form = ({ variant = "save" }) => {
             <label htmlFor="">Date of Birth</label>
             <DatePickerReact
               selected={dateOFBirth}
-              onChange={(dateOFBirth) => setDateOFBirth(dateOFBirth)}
+              onChange={(selectedDate) =>
+                setDateOFBirth(selectedDate, "dateOF")
+              }
+              cd
+              h
             />
           </div>
           <div>
@@ -137,7 +151,6 @@ const Form = ({ variant = "save" }) => {
               label="State"
               idHtmlFor="state"
               data={statesArray}
-              selectText="Select..."
               inputName="state"
               value={state}
               onChange={(e) => handleChangeSelect(e, setState)}

@@ -1,14 +1,6 @@
 import React from "react";
 
-const Select = ({
-  label,
-  idHtmlFor,
-  data,
-  selectText,
-  inputName,
-  value,
-  onChange,
-}) => {
+const Select = ({ label, idHtmlFor, data, inputName, value, onChange }) => {
   return (
     <>
       <label htmlFor={idHtmlFor}>{label}</label>
@@ -16,7 +8,6 @@ const Select = ({
         name={inputName}
         id={idHtmlFor}
         data={data}
-        selectText={selectText}
         value={value}
         onChange={onChange}
       >
