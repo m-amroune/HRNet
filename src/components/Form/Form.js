@@ -6,20 +6,19 @@ import { states } from "../../data/states";
 import Select from "../Select/Select";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
+import PropTypes from "prop-types";
 
 const Form = ({ variant = "save" }) => {
   const [department, setDepartment] = useState("Alabama");
   const [state, setState] = useState("Sales");
   const [startDate, setStartDate] = useState(new Date());
   const [dateOFBirth, setDateOFBirth] = useState(new Date());
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [error, setError] = useState(false);
-
   const [showModal, setShowModal] = useState(false);
 
   const formatDate = (date) => {
@@ -192,6 +191,10 @@ const Form = ({ variant = "save" }) => {
       </Modal>
     </div>
   );
+};
+
+Form.propTypes = {
+  variant: PropTypes.string,
 };
 
 export default Form;

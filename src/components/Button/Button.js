@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./style.module.css";
+import PropTypes from "prop-types";
 
 const Button = ({ type = "submit", variant = "save", children, onClick }) => {
   return (
@@ -11,6 +12,13 @@ const Button = ({ type = "submit", variant = "save", children, onClick }) => {
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  children: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Button;

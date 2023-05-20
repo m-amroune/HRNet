@@ -1,8 +1,6 @@
 import React from "react";
-// import { EmployeesListContext } from "../context/EmployeesListContext";
-import { EmployeesTable } from "m-a_plugin_table";
 
-// const { listEmployees } = useContext(EmployeesListContext);
+import { EmployeesTable } from "m-a_plugin_table";
 
 let userLocalStorage = localStorage.getItem("employee");
 if (userLocalStorage === null) {
