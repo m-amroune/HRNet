@@ -14,6 +14,7 @@ function App() {
         <Route path="*" element={<Error />} />
         <Route path="/table" element={<ListEmployees />} />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );

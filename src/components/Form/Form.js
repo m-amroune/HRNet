@@ -51,8 +51,12 @@ const Form = ({ variant = "save" }) => {
     zipCode: zipCode,
   };
 
+  const [employeeInfo, setEmployeeInfo] = useState([{ ...employee }]);
+  console.log(employeeInfo);
+
   const handleSave = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     if (
       firstName.length <= 1 ||
       lastName.length <= 1 ||
@@ -65,13 +69,16 @@ const Form = ({ variant = "save" }) => {
     } else {
       setError(false);
       setShowModal(true);
+
       let userLocalStorage = localStorage.getItem("employee");
       if (userLocalStorage == null) {
         userLocalStorage = [];
       } else {
         userLocalStorage = JSON.parse(userLocalStorage);
       }
+
       userLocalStorage.push(employee);
+      setEmployeeInfo(employee);
       localStorage.setItem("employee", JSON.stringify(userLocalStorage));
     }
   };
@@ -80,7 +87,7 @@ const Form = ({ variant = "save" }) => {
     <div className={style["form-container"]}>
       <form onSubmit={handleSave} className={style.form}>
         <div className={style.categories}>
-          <label htmlFor="">First Name</label>
+          <label>First Name</label>
           <input onChange={(e) => setFirstName(e.target.value)} type="text" />
           {error && firstName.length <= 1 ? (
             <p className={style.errorInput}>
@@ -181,7 +188,7 @@ const Form = ({ variant = "save" }) => {
         <Button
           className={`${style.button} ${style[variant]} `}
           type="submit"
-          onSubmit={handleSave}
+          onclick={handleSave}
         >
           Save
         </Button>

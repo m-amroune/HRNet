@@ -1,6 +1,7 @@
 .form-container {
   max-width: 600px;
   margin: 0 auto;
+  margin-bottom: 200px;
 }
 
 h2 {
@@ -17,6 +18,7 @@ h2 {
   background-color: #5a6f07;
   border-radius: 10px;
   box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 25%);
+  margin-bottom: 20px;
 }
 
 .categories {

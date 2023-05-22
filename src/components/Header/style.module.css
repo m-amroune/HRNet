@@ -66,6 +66,9 @@ nav li a {
 }
 
 @media screen and (max-width: 680px) {
+  .logo-title {
+    justify-content: center;
+  }
   .btnMenu {
     display: block;
   }
@@ -86,5 +89,6 @@ nav li a {
   .header {
     flex-direction: column;
     height: 150px;
+    justify-content: center;
   }
 }
