@@ -113,9 +113,7 @@ const Form = ({ variant = "save" }) => {
             <label htmlFor="">Date of Birth</label>
             <DatePickerReact
               selected={dateOFBirth}
-              onChange={(selectedDate) =>
-                setDateOFBirth(selectedDate, "dateOF")
-              }
+              onChange={(selectedDate) => setDateOFBirth(selectedDate)}
               cd
               h
             />
