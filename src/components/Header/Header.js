@@ -3,6 +3,8 @@ import logo from "../../assets/img/logo.jpg";
 import style from "./style.module.css";
 import Nav from "./Nav";
 
+// Header component to display header
+
 const Header = () => {
   return (
     <header className={style.header}>

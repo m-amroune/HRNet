@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+// Select component to display form select dropdowns
+
 const Select = ({ label, idHtmlFor, data, inputName, value, onChange }) => {
   return (
     <>

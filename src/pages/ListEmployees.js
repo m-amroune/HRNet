@@ -1,5 +1,5 @@
 import React from "react";
-
+// table npm package import
 import { EmployeesTable } from "m-a_plugin_table";
 
 let userLocalStorage = localStorage.getItem("employee");
@@ -22,6 +22,8 @@ const headColumns = [
   { title: "State", value: "state" },
   { title: "Zip Code", value: "zipCode" },
 ];
+
+// listEmployees component to display list of employees
 
 const ListEmployees = () => {
   return (

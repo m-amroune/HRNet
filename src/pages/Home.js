@@ -1,5 +1,8 @@
 import Form from "../components/Form/Form";
 import "../index.css";
+
+// home page app
+
 const Home = () => {
   return (
     <main className="container-main">

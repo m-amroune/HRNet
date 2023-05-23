@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import DatePickerReact from "../DatePicker/DatePicker";
 import style from "./style.module.css";
+import PropTypes from "prop-types";
+// data imports
 import { departments } from "../../data/departments";
 import { states } from "../../data/states";
+// components imports
 import Select from "../Select/Select";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
-import PropTypes from "prop-types";
+import DatePickerReact from "../DatePicker/DatePicker";
+
+// Form component to display create employee form
 
 const Form = ({ variant = "save" }) => {
   const [department, setDepartment] = useState("Alabama");
@@ -21,6 +25,8 @@ const Form = ({ variant = "save" }) => {
   const [error, setError] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  // Arrow function to display date format
+
   const formatDate = (date) => {
     const dateNew = new Date(date);
     const dateISO = dateNew.toISOString().split("T")[0];
@@ -29,10 +35,13 @@ const Form = ({ variant = "save" }) => {
     return [year, month, day].join("");
   };
 
+  // Arrow function to manage input
+
   const handleChangeSelect = (e, inputName) => {
     inputName(e.target.value);
   };
 
+  // data from states array
   const statesArray = states.map((state) => {
     return state.name;
   });

@@ -2,6 +2,8 @@ import React from "react";
 import style from "./style.module.css";
 import Button from "../Button/Button";
 
+// Modal component to display validation confirmation message
+
 const Modal = ({ variant = "close", isOpen, setIsOpen, children }) => {
   return (
     isOpen && (
