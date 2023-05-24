@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
 import PropTypes from "prop-types";
 // data imports
@@ -60,8 +60,18 @@ const Form = ({ variant = "save" }) => {
     zipCode: zipCode,
   };
 
-  const [employeeInfo, setEmployeeInfo] = useState([{ ...employee }]);
-  console.log(employeeInfo);
+  const [employeeInfo, setEmployeeInfo] = useState([{ employee }]);
+
+  useEffect(() => {
+    let userLocalStorage = localStorage.getItem("employee");
+    if (userLocalStorage == null) {
+      userLocalStorage = [];
+    } else {
+      userLocalStorage = JSON.parse(userLocalStorage);
+    }
+    setEmployeeInfo(employeeInfo);
+    localStorage.setItem("employee", JSON.stringify(userLocalStorage));
+  }, [employeeInfo]);
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -85,7 +95,6 @@ const Form = ({ variant = "save" }) => {
       } else {
         userLocalStorage = JSON.parse(userLocalStorage);
       }
-
       userLocalStorage.push(employee);
       setEmployeeInfo(employee);
       localStorage.setItem("employee", JSON.stringify(userLocalStorage));
