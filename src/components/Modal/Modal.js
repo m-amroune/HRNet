@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 
 // Modal component to display validation confirmation message
 
-const Modal = ({ variant = "close", isOpen, setIsOpen, children }) => {
+const Modal = ({ isOpen, setIsOpen, children }) => {
   return (
     isOpen && (
       <div className={style.overlay}>

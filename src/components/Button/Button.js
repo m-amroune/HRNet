@@ -17,7 +17,6 @@ const Button = ({ type = "submit", variant = "save", children, onClick }) => {
 };
 
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
   variant: PropTypes.string,
   children: PropTypes.string.isRequired,
   onClick: PropTypes.func,
