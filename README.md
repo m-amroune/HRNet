@@ -1,4 +1,14 @@
-# HRNET: P14 OpenClassrooms
+# HRNet
+
+Projet formation OpenClassrooms : Faites passer une librairie jQuery vers React
+
+## Skills
+
+- Analyze the performance of a web application
+- Deploy a front-end application
+- Redesign an application to reduce technical debt
+- Set up your Front-End environment
+- Produce technical documentation for an application
 
 ## 1. Technologies
 
